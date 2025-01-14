@@ -1,0 +1,1 @@
+{"name":"Local: c","url":"/home/rocky/Desktop/Problems/CF_CONTEST/DIV_3_ROUND_970/c.cpp","tests":[{"id":1725205629658,"input":"3\n3\n3 2 3\n4\n2 2 2 4\n5\n1 2 3 4 5","output":"7\n6\n500000012"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/rocky/Desktop/Problems/CF_CONTEST/DIV_3_ROUND_970/c.cpp","group":"local","local":true}
