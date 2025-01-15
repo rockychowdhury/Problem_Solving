@@ -18,18 +18,26 @@ int main()
     cin >> t;
     while (t--)
     {
-        int n, k;
-        cin >> n >> k;
-        int prev = 0;
-        int sorted = true;
+        int n;
+        cin >> n;
+        int count = 0;
+        int wall = 0;
         In_range(i, 0, n)
         {
-            int x;
-            cin >> x;
-            (x < prev) ? sorted = false : prev = x;
+            char c;
+            cin >> c;
+            if (c == '#')
+            {
+                wall++;
+                if (count < 3)
+                    count = 0;
+            }
+            else
+            {
+                count++;
+            }
         }
-
-        (k == 1) ? (n == 1 || sorted) ? cout << "YES" << endl : cout << "NO" << endl : cout << "YES" << endl;
+        (count>2)?cout<<2<<endl:cout<<n-wall<<endl;
     }
 
     return 0;
