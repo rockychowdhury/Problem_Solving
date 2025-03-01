@@ -18,27 +18,26 @@ int main()
     cin >> t;
     while (t--)
     {
-
         int n;
         cin >> n;
-        vector<int> v(n);
-        for (int i = 0; i < n; i++)
+        vector<int> arr(n);
+        In_range(i, 0, n)
         {
-            cin >> v[i];
+            cin >> arr[i];
+            if(arr[i]==1)arr[i]++;
         }
-        if (n % 2 == 0)
+        In_range(i, 1, n)
         {
-            cout << 2 << endl;
-            cout << 1 << " " << n << endl;
-            cout << 1 << " " << n << endl;
+            if (arr[i] % arr[i - 1]==0)
+            {
+                arr[i]++;
+            }
         }
-        else{
-            cout<<4<<endl;
-            cout<<1<<" "<<n-1<<endl;
-            cout<<1<<" "<<n-1<<endl;
-            cout<<n-1<<" "<<n<<endl;
-            cout<<n-1<<" "<<n<<endl;
+        In_range(i, 0, n)
+        {
+            cout << arr[i] << " ";
         }
+        cout << endl;
     }
 
     return 0;

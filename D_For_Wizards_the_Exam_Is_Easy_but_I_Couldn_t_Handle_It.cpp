@@ -2,18 +2,41 @@
 using namespace std;
 #define endl "\n"
 #define ll long long
-#define In_range(i, s, n) for (int i = s; i < n; i++)
 typedef pair<int, int> pii;
-const int INF = 1e9 + 7;
-const int N = 1e5 + 5;
-const int M = 1e3 + 5;
-int i, j;
 
-#include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/tree_policy.hpp>
-using namespace __gnu_pbds;
-template <typename T>
-using ordered_set = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
+void solve()
+{
+    int n;
+    cin >> n;
+    vector<int> arr(n);
+
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+
+    int inv_count = 0;
+    int l = 0, r = 0;
+    for (int i = 0; i < n; i++)
+    {
+        int curr_inv = 0;
+        int curr_r = -1;
+        for (int j = i + 1; j < n; j++)
+        {
+            if (arr[i] > arr[j])
+            {
+                curr_inv++;
+                curr_r = j;
+            }
+        }
+        if (curr_inv > inv_count || (curr_inv == inv_count && inv_count != 0 && (arr[l] < arr[i])))
+        {
+            inv_count = curr_inv;
+            r = curr_r;
+            l = i;
+        }
+    }
+
+    cout << l + 1 << " " << r + 1 << endl;
+}
 
 int main()
 {
@@ -25,38 +48,7 @@ int main()
     cin >> t;
     while (t--)
     {
-
-        int n;
-        cin >> n;
-        vector<int> arr(n);
-        In_range(i, 0, n) cin >> arr[i];
-        ordered_set<int> pbds;
-        int cnt = 0, l = n - 1;
-        for (int i = n - 1; i >= 0; i--)
-        {
-            pbds.insert(arr[i]);
-            int key = pbds.order_of_key(arr[i]);
-            if (key > cnt)
-            {
-                cnt = key;
-                l = i;
-            }
-        }
-        if (cnt == 0)
-        {
-            cout << 1 << " " << 1 << endl;
-            continue;
-        }
-        int r = 0;
-        for (int i = n - 1; i >= 0; i--)
-        {
-            if (arr[i] < arr[l])
-            {
-                r = i;
-                break;
-            }
-        }
-        cout << l + 1 << " " << r + 1 << endl;
+        solve();
     }
 
     return 0;

@@ -18,27 +18,30 @@ int main()
     cin >> t;
     while (t--)
     {
-
-        int n;
+        ll n;
         cin >> n;
-        vector<int> v(n);
-        for (int i = 0; i < n; i++)
+        ll count = 0;
+        if (n == 0)
         {
-            cin >> v[i];
+            cout << 1 << endl;
+            continue;
         }
-        if (n % 2 == 0)
+
+        count = n / 15;
+
+        if (n % 15 == 0)
         {
-            cout << 2 << endl;
-            cout << 1 << " " << n << endl;
-            cout << 1 << " " << n << endl;
+            count *= 3;
+            count -= 2;
         }
-        else{
-            cout<<4<<endl;
-            cout<<1<<" "<<n-1<<endl;
-            cout<<1<<" "<<n-1<<endl;
-            cout<<n-1<<" "<<n<<endl;
-            cout<<n-1<<" "<<n<<endl;
+        else if(n>15){
+            count *= 3;
+            count += min(2ll, (n % 15));
+            count-=2;
         }
+        count += min(3ll, n + 1);
+
+        cout << count << endl;
     }
 
     return 0;

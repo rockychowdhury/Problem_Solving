@@ -21,42 +21,32 @@ int main()
 
         int n, x;
         cin >> n >> x;
-        if(n==1){
-            cout<<x<<endl;
-            continue;
-        }
-        if (x % 2 == 0)
+        vector<int> v;
+        for (int i = 0; i < n; i++)
         {
-            In_range(i, 0, n - 1)
+            if ((x & i )!= i)
             {
-                cout << 0 << " ";
+                v.resize(n);
+                break;
             }
-            cout << x << endl;
+            v.push_back(i);
         }
 
-        else
+        int cor = 0;
+        for (const auto &x : v)
         {
-            cout<<x<<" ";
-            In_range(i, 0, n-1)
-            {
-
-                if (i == 0)
-                {
-                    cout << 0 << " ";
-                    continue;
-                }
-                if (i % 2 == 0 && (i * 2) - 1 == x)
-                {
-                    cout << 1 << " ";
-                }
-                else
-                {
-                    cout << i << " ";
-                }
-            }
-            cout<<endl;
+            cor |= x;
         }
+        if (cor != x)
+        {
+            v.pop_back();
+            v.push_back(x);
+        }
+        for(auto i:v)
+        {
+            cout<<i<<" ";
+        }
+        cout<<endl;
     }
-
     return 0;
 }
