@@ -29,7 +29,7 @@ int main()
                 zeros.push_back(i);
         }
         int op = 0;
-        In_range(i, 1, zeros.size())                
+        In_range(i, 1, zeros.size())
         {
             if (zeros[i] != zeros[i - 1] + 1)
                 op++;
